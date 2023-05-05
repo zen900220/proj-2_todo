@@ -1,0 +1,57 @@
+@use "../../scss" as scss;
+
+.home {
+  flex-grow: 1;
+  background-color: scss.$black;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+
+  > div:nth-child(1) {
+    z-index: 1;
+  }
+
+  > div:nth-child(2) {
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+
+    &:empty::before {
+      content: "Login And Start Organizing Your Tasks Now !";
+      color: hsl(0, 0%, 60%);
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(1.5rem, 1rem + 5vw, 4rem);
+    }
+  }
+
+  > button {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: clamp(3rem, 2rem + 4vmax, 5rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: scss.$black;
+    border: 4px solid scss.$blue;
+    z-index: 3;
+    font-size: clamp(2rem, 1rem + 4vmax, 3rem);
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+
+  > dialog {
+    width: max(15rem, 30%);
+    padding: 1rem;
+    position: absolute;
+    left: 50%;
+    top: scss.$header-height;
+    transform: translateX(-50%);
+  }
+}

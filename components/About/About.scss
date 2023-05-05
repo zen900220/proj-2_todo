@@ -1,0 +1,69 @@
+@use "../../scss/" as scss;
+
+.about {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+  background-color: scss.$black;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.text {
+  width: calc(19rem + 10vw);
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.word {
+  transition: all 0.5s;
+  font-size: calc(1.6rem + 1.5vw);
+}
+
+.fancy > a {
+  display: flex;
+}
+
+.fancy > a > span {
+  cursor: pointer;
+  color: #00f2ff;
+  transition: all 0.5s;
+}
+
+.text:has(.fancy:hover) .word:not(.fancy:hover) {
+  opacity: 0.3;
+}
+
+.fancy:hover span:nth-child(1) {
+  transform: translate(-20%, -16%) rotate(-13deg);
+}
+
+.fancy:hover span:nth-child(2) {
+  transform: translate(-3%, 20%) rotate(6deg);
+}
+
+.fancy:hover span:nth-child(3) {
+  transform: translate(-2%, -29%) rotate(9deg);
+}
+
+.fancy:hover span:nth-child(4) {
+  transform: translate(-29%, 21%) rotate(19deg);
+}
+
+.fancy:hover span:nth-child(5) {
+  transform: translate(1%, -26%) rotate(-10deg);
+}
+
+.fancy:hover span:nth-child(6) {
+  transform: translate(11%, 20%) rotate(10deg);
+}
+
+.fancy:hover span:nth-child(7) {
+  transform: translate(24%, -24%) rotate(-9deg);
+}

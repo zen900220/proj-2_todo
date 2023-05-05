@@ -1,0 +1,121 @@
+@use "../../scss" as scss;
+@use "sass:color";
+
+.header {
+  background-color: scss.$black;
+  display: flex;
+  justify-content: space-between;
+  height: scss.$header-height;
+  position: relative;
+  z-index: 1;
+
+  main {
+    display: grid;
+    place-items: center;
+    min-width: 40%;
+
+    h1 {
+      font-size: max(3rem, calc(2rem + 3vw));
+      background: linear-gradient(
+        to right,
+        scss.$blue,
+        color.adjust(scss.$blue, $lightness: +10%),
+        color.adjust(scss.$blue, $lightness: +30%),
+        color.adjust(scss.$blue, $lightness: +10%),
+        scss.$blue
+      );
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: scroll 10s linear infinite forwards;
+
+      @keyframes scroll {
+        from {
+          background-position: 0% 50%;
+        }
+
+        to {
+          background-position: -200% 50%;
+        }
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+    appearance: none;
+    border: 1px solid white;
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    position: absolute;
+    top: 46px;
+    right: 10%;
+    border-radius: 50%;
+
+    &:checked {
+      background-color: blue;
+    }
+  }
+
+  nav {
+    padding: 0 2rem;
+    display: flex;
+    gap: 2rem;
+    transition: all 0.5s ease-in;
+
+    a,
+    button {
+      color: white;
+      font-size: max(1.5rem, 1.2rem + 1.3vw);
+      display: grid;
+      place-items: center;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :is(a, button):hover {
+      border-bottom: 5px solid scss.$blue;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: unset;
+    padding: 2rem 0;
+
+    main {
+      display: block;
+      padding-left: 2rem;
+    }
+
+    input[type="checkbox"] {
+      display: block;
+    }
+
+    input:checked + nav {
+      top: 100%;
+      opacity: 100%;
+    }
+
+    nav {
+      background-color: scss.$black;
+      position: absolute;
+      top: -200%;
+      opacity: 0%;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 1rem;
+
+      a {
+        width: fit-content;
+      }
+    }
+  }
+}

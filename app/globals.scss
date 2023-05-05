@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+a,
+a:visited,
+a:active {
+  color: unset;
+  text-decoration: unset;
+}
+
+button {
+  background-color: unset;
+  border: none;
+}
