@@ -38,9 +38,12 @@ const Login = () => {
             {/* login */}
             <div>
               <p>
+                <img src="/curved-email.svg" alt="icon" />
+
                 <input type="email" placeholder="Email" />
               </p>
               <p>
+                <img src="/open-lock.svg" alt="icon" />
                 <input type="password" placeholder="Password" />
               </p>
               <button>Login</button>
@@ -48,15 +51,19 @@ const Login = () => {
             {/* register */}
             <div>
               <p>
+                <img src="/person.svg" alt="icon" />
                 <input type="text" placeholder="Username" />
               </p>
               <p>
+                <img src="/curved-email.svg" alt="icon" />
                 <input type="email" placeholder="Email" />
               </p>
               <p>
+                <img src="/open-lock.svg" alt="icon" />
                 <input type="password" placeholder="Password" />
               </p>
               <p>
+                <img src="/closed-lock.svg" alt="icon" />
                 <input type="password" placeholder="Confirm Password" />
               </p>
               <button>Register</button>

@@ -24,7 +24,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(16rem, 10rem + 13%, 25rem);
+    width: clamp(20rem, 10rem + 13%, 30rem);
     padding: 1rem;
     aspect-ratio: 10/14.5;
     border-radius: 10px;
@@ -51,19 +51,19 @@
           font-size: clamp(1rem, 0.6rem + 1.5vw, 5rem);
           cursor: pointer;
           transition: all 0.5s;
-        }
 
-        > span:hover {
-          background-color: white;
-          color: scss.$black;
-        }
+          &:hover {
+            background-color: white;
+            color: scss.$black;
+          }
 
-        > span:nth-child(1) {
-          border-top-left-radius: 10px;
-        }
+          &:nth-child(1) {
+            border-top-left-radius: 10px;
+          }
 
-        > span:nth-child(2) {
-          border-top-right-radius: 10px;
+          &:nth-child(2) {
+            border-top-right-radius: 10px;
+          }
         }
       }
 
@@ -88,7 +88,77 @@
         > div {
           width: 50%;
           height: 100%;
-          border: 1px solid blue;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-top: 3rem;
+          position: relative;
+
+          &:nth-child(1) {
+            gap: 1rem+2.5rem+1rem;
+          }
+
+          &:nth-child(2) {
+            gap: 1rem;
+          }
+
+          > p {
+            height: 2.5rem;
+            position: relative;
+
+            &:nth-child(odd) > input {
+              border-radius: 18px 8px 18px 8px;
+            }
+
+            &:nth-child(even) > input {
+              border-radius: 8px 18px 8px 18px;
+            }
+
+            > input {
+              width: 100%;
+              height: 100%;
+              padding-left: 2.6rem;
+              padding-right: 1rem;
+              font-size: 1.5rem;
+              color: white;
+
+              &:is(:focus, :hover) {
+                background-color: rgba($color: white, $alpha: 0.3);
+              }
+            }
+
+            > img {
+              height: 2rem;
+              position: absolute;
+              top: 50%;
+              left: 1%;
+              transform: translateY(-50%);
+              filter: invert(100%);
+
+              &:has(+ input:is(:focus, :hover)) {
+                filter: invert(12%) sepia(63%) saturate(6234%)
+                  hue-rotate(246deg) brightness(87%) contrast(156%);
+              }
+            }
+          }
+
+          > button {
+            width: 100%;
+            padding: 1rem 0;
+            color: white;
+            font-size: 1.3rem;
+            border: 1px solid white;
+            border-radius: 0 0 10px 10px;
+            cursor: pointer;
+            transition: all 0.5s;
+            position: absolute;
+            bottom: 0;
+
+            &:hover {
+              background: white;
+              color: scss.$black;
+            }
+          }
         }
       }
     }
