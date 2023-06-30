@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import "./Login.scss";
 import React, { useRef } from "react";
+import BlueFilter from "../UtilityComponents/BlueFilter";
 
 const Login = () => {
   const toggleBarRef = useRef();
@@ -18,60 +20,64 @@ const Login = () => {
   }
 
   return (
-    <div className="login">
-      {/* login window */}
-      <div>
-        {/* toggle box */}
+    <>
+      <BlueFilter />
+      <div className="login">
+        {/* login window */}
         <div>
-          {/* toggle controls */}
+          {/* toggle box */}
           <div>
-            <span onClick={(e) => toggleHandler("login")}>Login</span>
-            <span onClick={(e) => toggleHandler("register")}>Register</span>
-          </div>
-          {/* toggle slider */}
-          <div ref={toggleBarRef}></div>
-        </div>
-        {/* box containing login/register sliding track */}
-        <div>
-          {/* sliding box containing the 2 forms */}
-          <div ref={slideTrackRef}>
-            {/* login */}
+            {/* toggle controls */}
             <div>
-              <p>
-                <img src="/curved-email.svg" alt="icon" />
-
-                <input type="email" placeholder="Email" />
-              </p>
-              <p>
-                <img src="/open-lock.svg" alt="icon" />
-                <input type="password" placeholder="Password" />
-              </p>
-              <button>Login</button>
+              <span onClick={(e) => toggleHandler("login")}>Login</span>
+              <span onClick={(e) => toggleHandler("register")}>Register</span>
             </div>
-            {/* register */}
-            <div>
-              <p>
-                <img src="/person.svg" alt="icon" />
-                <input type="text" placeholder="Username" />
-              </p>
-              <p>
-                <img src="/curved-email.svg" alt="icon" />
-                <input type="email" placeholder="Email" />
-              </p>
-              <p>
-                <img src="/open-lock.svg" alt="icon" />
-                <input type="password" placeholder="Password" />
-              </p>
-              <p>
-                <img src="/closed-lock.svg" alt="icon" />
-                <input type="password" placeholder="Confirm Password" />
-              </p>
-              <button>Register</button>
+            {/* toggle slider */}
+            <div ref={toggleBarRef}></div>
+          </div>
+          {/* box containing login/register sliding track */}
+          <div>
+            {/* sliding box containing the 2 forms */}
+            <div ref={slideTrackRef}>
+              {/* login */}
+              <div>
+                <p>
+                  <img src="/curved-email.svg" alt="icon" />
+
+                  <input type="email" placeholder="Email" />
+                </p>
+                <p>
+                  <img src="/open-lock.svg" alt="icon" />
+                  <input type="password" placeholder="Password" />
+                </p>
+                <Link href="/about">Forgot password ?</Link>
+                <button>Login</button>
+              </div>
+              {/* register */}
+              <div>
+                <p>
+                  <img src="/person.svg" alt="icon" />
+                  <input type="text" placeholder="Username" />
+                </p>
+                <p>
+                  <img src="/curved-email.svg" alt="icon" />
+                  <input type="email" placeholder="Email" />
+                </p>
+                <p>
+                  <img src="/open-lock.svg" alt="icon" />
+                  <input type="password" placeholder="Password" />
+                </p>
+                <p>
+                  <img src="/closed-lock.svg" alt="icon" />
+                  <input type="password" placeholder="Confirm Password" />
+                </p>
+                <button>Register</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
