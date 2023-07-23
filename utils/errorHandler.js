@@ -16,7 +16,7 @@ export const errorHandler = (error) => {
   }
 
   return NextResponse.json(
-    { name, message, error },
+    { name, message },
     {
       status: status,
     }

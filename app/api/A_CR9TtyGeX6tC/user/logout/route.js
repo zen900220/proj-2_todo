@@ -5,7 +5,7 @@ export async function GET() {
     { success: true },
     {
       headers: {
-        "Set-Cookie": `token=""; Expires=${new Date(0)}`,
+        "Set-Cookie": `token=""; Expires=${new Date(0)}; Path=/`,
       },
     }
   );

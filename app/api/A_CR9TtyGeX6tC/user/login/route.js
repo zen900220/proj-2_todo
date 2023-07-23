@@ -3,7 +3,6 @@ import { connectDb } from "@/database/utils";
 import { CustomError } from "@/utils/CustomError";
 import { errorHandler } from "@/utils/errorHandler";
 import { sendLoginToken } from "@/utils/sendLoginToken";
-import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {

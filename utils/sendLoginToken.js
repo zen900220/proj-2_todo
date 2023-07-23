@@ -25,7 +25,7 @@ export const sendLoginToken = (user) => {
     },
     {
       headers: {
-        "Set-Cookie": `token=${token}; HttpOnly; Expires=${expiresIn}`,
+        "Set-Cookie": `token=${token}; HttpOnly; Expires=${expiresIn}; Path=/`,
       },
     }
   );
