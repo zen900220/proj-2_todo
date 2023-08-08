@@ -4,10 +4,11 @@ import React, { useRef } from "react";
 
 import "./Home.scss";
 import GlowGrid from "../GlowGrid/GlowGrid";
+import TodoPanel from "../TodoPanel/TodoPanel";
+import AddTodo from "../AddTodo/AddTodo";
 
 const Home = () => {
   const glowRef = useRef();
-  const dialogRef = useRef();
 
   function tracker(e) {
     let { clientX, clientY } = e;
@@ -18,25 +19,11 @@ const Home = () => {
     });
   }
 
-  function addBtnClick(e) {
-    dialogRef.current.showModal();
-  }
-
-  function dialogClose(e) {
-    console.log(1);
-  }
-
   return (
     <div className="home" onPointerMove={tracker}>
       <GlowGrid tag={glowRef} />
-      <div></div>
-      <button onClick={addBtnClick}>+</button>
-      <dialog ref={dialogRef} onClose={dialogClose}>
-        <p>Hello</p>
-        <form action="">
-          <button formMethod="dialog">Cancel</button>
-        </form>
-      </dialog>
+      <TodoPanel />
+      <AddTodo />
     </div>
   );
 };

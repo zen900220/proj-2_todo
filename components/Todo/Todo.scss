@@ -1,0 +1,129 @@
+@use "../../scss/index" as scss;
+@use "sass:color";
+
+.todo {
+  border: 1px solid white;
+  padding: 0.5rem;
+
+  &:is(:hover, :focus) {
+    backdrop-filter: blur(3px);
+    border: 1px solid scss.$blue;
+    box-shadow: 0px 0px 15px 1px scss.$blue;
+  }
+
+  * {
+    color: white;
+  }
+
+  > form {
+    width: 100%;
+    height: 100%;
+
+    > p {
+      min-height: 2rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-right: 1.5rem;
+      margin-bottom: 0.5rem;
+
+      & > input,
+      & > span {
+        font-size: 1.3rem;
+      }
+
+      & > span {
+        overflow-wrap: break-word;
+      }
+
+      &:first-child {
+        min-height: 2.5rem;
+        margin-bottom: 2rem;
+
+        > * {
+          font-size: 1.8rem;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      &:not(:first-child) {
+        > span {
+          color: white;
+          transition: all 0.5s;
+        }
+      }
+
+      // & > :is(span, input) {
+      //   display: block;
+      //   height: 100%;
+      // }
+
+      & > input[type="checkbox"]:first-child {
+        appearance: none;
+        min-width: 1rem;
+        aspect-ratio: 1;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 1rem;
+        background-image: url("/done.svg");
+        background-size: cover;
+        background-position: center;
+
+        &:is(:hover, :focus, :checked) {
+          background-color: scss.$blue;
+          + span {
+            text-decoration: line-through;
+            color: color.scale($color: scss.$blue, $lightness: -40%);
+          }
+        }
+      }
+
+      & > input[type="checkbox"]:last-child {
+        appearance: none;
+        width: 1rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        cursor: pointer;
+        background-image: url("/delete.svg");
+        background-size: cover;
+        background-position: center;
+        filter: url("#makeMeBlue");
+        position: absolute;
+        right: 0.5rem;
+        transition: all 0.5s;
+
+        &:is(:hover, :focus, :checked) {
+          scale: 1.3;
+        }
+
+        &:checked {
+          border: 1px solid scss.$blue;
+        }
+      }
+
+      > span:has(+ input:checked) {
+        color: transparent !important;
+      }
+    }
+  }
+}
+
+.todo-controls {
+  height: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+
+  > button {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    width: 40%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 1px solid scss.$blue;
+    line-height: 1;
+  }
+}

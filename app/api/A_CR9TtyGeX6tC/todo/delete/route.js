@@ -31,7 +31,9 @@ export const DELETE = async (req) => {
       );
     }
 
-    return NextResponse.json({ success: true, todo });
+    const todos = await Todo.find({ user: user._id });
+
+    return NextResponse.json({ success: true, todos });
   } catch (error) {
     return errorHandler(error);
   }

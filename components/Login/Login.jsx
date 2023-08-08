@@ -26,7 +26,9 @@ const Login = () => {
     }
   }
 
-  async function register() {
+  async function register(e) {
+    e.preventDefault();
+
     context.setAppState((prev) => ({
       ...prev,
       loading: true,
@@ -55,7 +57,9 @@ const Login = () => {
     });
   }
 
-  async function login() {
+  async function login(e) {
+    e.preventDefault();
+
     // set page in loading mode
     context.setAppState((prev) => ({
       ...prev,
@@ -133,79 +137,89 @@ const Login = () => {
             <div ref={slideTrackRef}>
               {/* login */}
               <div>
-                <p>
-                  <img src="/curved-email.svg" alt="icon" />
+                <form onSubmit={login}>
+                  <p>
+                    <img src="/curved-email.svg" alt="icon" />
 
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={(e) =>
-                      updateInfo("login", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <p>
-                  <img src="/open-lock.svg" alt="icon" />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={(e) =>
-                      updateInfo("login", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <Link href="/about">Forgot password ?</Link>
-                <button onClick={login}>Login</button>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      onChange={(e) =>
+                        updateInfo("login", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <p>
+                    <img src="/open-lock.svg" alt="icon" />
+                    <input
+                      required
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      onChange={(e) =>
+                        updateInfo("login", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <Link href="/password/forgot">Forgot password ?</Link>
+                  <button type="submit">Login</button>
+                </form>
               </div>
               {/* register */}
               <div>
-                <p>
-                  <img src="/person.svg" alt="icon" />
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    onChange={(e) =>
-                      updateInfo("register", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <p>
-                  <img src="/curved-email.svg" alt="icon" />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={(e) =>
-                      updateInfo("register", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <p>
-                  <img src="/open-lock.svg" alt="icon" />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={(e) =>
-                      updateInfo("register", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <p>
-                  <img src="/closed-lock.svg" alt="icon" />
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    onChange={(e) =>
-                      updateInfo("register", e.target.name, e.target.value)
-                    }
-                  />
-                </p>
-                <button onClick={register}>Register</button>
+                <form onSubmit={register}>
+                  <p>
+                    <img src="/person.svg" alt="icon" />
+                    <input
+                      required
+                      type="text"
+                      name="username"
+                      placeholder="Username"
+                      onChange={(e) =>
+                        updateInfo("register", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <p>
+                    <img src="/curved-email.svg" alt="icon" />
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      onChange={(e) =>
+                        updateInfo("register", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <p>
+                    <img src="/open-lock.svg" alt="icon" />
+                    <input
+                      required
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      onChange={(e) =>
+                        updateInfo("register", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <p>
+                    <img src="/closed-lock.svg" alt="icon" />
+                    <input
+                      required
+                      type="password"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      onChange={(e) =>
+                        updateInfo("register", e.target.name, e.target.value)
+                      }
+                    />
+                  </p>
+                  <button>Register</button>
+                </form>
               </div>
             </div>
           </div>

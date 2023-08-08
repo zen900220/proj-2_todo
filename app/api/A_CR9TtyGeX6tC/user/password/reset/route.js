@@ -3,7 +3,6 @@ import { connectDb } from "@/database/utils";
 import { CustomError } from "@/utils/CustomError";
 import { errorHandler } from "@/utils/errorHandler";
 import { NextResponse } from "next/server";
-import crypto from "node:crypto";
 
 export const POST = async (req) => {
   try {
@@ -28,6 +27,7 @@ export const POST = async (req) => {
     }
 
     user.password = newPassword;
+
     await user.emptyResetCredentials();
     await user.save();
 

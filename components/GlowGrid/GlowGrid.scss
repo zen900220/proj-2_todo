@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
+  z-index: 1;
 
   > div:nth-child(1) {
     width: 40vmin;
@@ -16,7 +17,7 @@
     position: absolute;
     transform: translate(-50%, -100%);
     z-index: 1;
-    filter: blur(100px);
+    filter: blur(8vw);
   }
 
   > div:nth-child(2) {

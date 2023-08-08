@@ -25,7 +25,8 @@ button {
 }
 
 input,
-input:focus {
+input:focus,
+textarea {
   background: unset;
   border: none;
   outline: none;

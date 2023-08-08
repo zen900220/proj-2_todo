@@ -47,8 +47,44 @@ export async function logoutHandler() {
   return data;
 }
 
-export function loadHandler() {}
+export async function loadHandler() {
+  const res = await fetch("/api/A_CR9TtyGeX6tC/user/load");
 
-export function forgotPswdHandler(email) {}
+  const data = await res.json();
 
-export function resetPswdHandler(token, password, confirmPassword) {}
+  return data;
+}
+
+export async function forgotPswdHandler(email) {
+  const res = await fetch("/api/A_CR9TtyGeX6tC/user/password/forgot", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function resetPswdHandler(token, newPassword, confirmPassword) {
+  const res = await fetch("/api/A_CR9TtyGeX6tC/user/password/reset", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      token,
+      newPassword,
+      confirmPassword,
+    }),
+  });
+
+  const data = await res.json();
+
+  return data;
+}

@@ -20,7 +20,7 @@ export const POST = async (req) => {
       );
     }
 
-    let { title, tasks = [] } = await req.json(); // tasks is an array of strings where is string is a task desc.
+    let { title, tasks = [] } = await req.json(); // tasks is an array of strings where each string is a task desc.
 
     tasks = tasks.map((task) => ({
       description: task,

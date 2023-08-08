@@ -1,20 +1,45 @@
 "use client";
 
 import { createContext, useEffect, useMemo, useState } from "react";
+import { findTodosHandler } from "./handlers/todoHandlers";
+import { loadHandler } from "./handlers/userHandlers";
 
 // context of entire app
 export const AppContext = createContext({});
 
 // we are doin load user in this component as its rendered in layout.js meaning its going to be executed for every possible url.
 async function loadUser(setState) {
-  const res = await fetch("/api/A_CR9TtyGeX6tC/user/load");
-  const data = await res.json();
-
-  if (!data.success) return;
-
+  // set loading true
   setState((prev) => ({
     ...prev,
-    user: data.user,
+    loading: true,
+  }));
+
+  const userData = await loadHandler();
+
+  if (!userData.success) {
+    setState((prev) => ({
+      ...prev,
+      loading: false,
+    }));
+    return;
+  }
+
+  // if user loading success get all todo of loaded user
+  const todoData = await findTodosHandler();
+
+  if (!todoData.success) {
+    setState((prev) => ({
+      ...prev,
+      loading: false,
+    }));
+    return alert("Couldn't load your Todos. Refresh page to try again!");
+  }
+
+  setState((prev) => ({
+    loading: false,
+    user: userData.user,
+    todos: todoData.todos,
   }));
 }
 
