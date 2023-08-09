@@ -71,7 +71,7 @@
         background-size: cover;
         background-position: center;
 
-        &:is(:hover, :focus, :checked) {
+        &:is(:checked, :hover) {
           background-color: scss.$blue;
           + span {
             text-decoration: line-through;

@@ -61,7 +61,7 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     loadUser(setAppState);
-    window.addEventListener("contextmenu", (e) => e.preventDefault());
+    // window.addEventListener("contextmenu", (e) => e.preventDefault());
   }, []);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
