@@ -5,11 +5,11 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    await connectDb();
+    // await connectDb();
 
-    const { success, user } = await authenticate();
+    const data = await authenticate();
 
-    return NextResponse.json({ success, user });
+    return NextResponse.json(data);
   } catch (error) {
     return errorHandler(error);
   }
