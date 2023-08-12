@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // await connectDb();
+    await connectDb();
 
     const data = await authenticate();
 
